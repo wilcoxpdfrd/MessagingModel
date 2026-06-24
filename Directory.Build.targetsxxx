@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+
+<!--
+	<UsingTask
+	  TaskName="SetEnvironmentVariableTask"
+	  TaskFactory="CodeTaskFactory"
+	  AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+
+	  <ParameterGroup>
+		<Name ParameterType="System.String" Required="true" />
+		<Value ParameterType="System.String" Required="true" />
+	  </ParameterGroup>
+
+	  <Task>
+		<Using Namespace="System" />
+		<Code Type="Fragment" Language="cs">
+		  <![CDATA[
+			Environment.SetEnvironmentVariable(Name, Value);
+		  ]]>
+		</Code>
+	  </Task>
+
+	</UsingTask>
+
+	<Target Name="AddPath" BeforeTargets="PrepareForBuild">
+		<SetEnvironmentVariableTask Name="PATH" Value="$(PATH);C:\Windows\Microsoft.NET\Framework\v4.0.30319\" />
+	</Target>
+-->
+	<Import Project="Sdk.targets" Sdk="Microsoft.DotNet.Arcade.Sdk" />
+</Project>

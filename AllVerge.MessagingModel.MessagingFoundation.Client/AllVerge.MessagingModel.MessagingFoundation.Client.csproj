@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <VersionSuffix>$(VersionSuffix)</VersionSuffix>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <Target Name="NugetPackAutoVersioning" AfterTargets="Build">
+    <Exec Command="dotnet pack --version-suffix &quot;build.$([System.DateTime]::UtcNow.ToString(yyMMddHHmmss))&quot; -p:PackageVersion=$(VersionPrefix)-build.$([System.DateTime]::UtcNow.ToString(yyMMddHHmmss)) --no-build --configuration $(Configuration) --output $(SolutionDir)/nupkgs" />
+  </Target>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AllVerge.MessagingModel.MessagingFoundation\AllVerge.MessagingModel.MessagingFoundation.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SystemPrimitives\AllVerge.SystemPrimitives.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AllVerge.MessagingModel.MessagingFoundation" Version="1.0.0-build.250203010535" />
+    <PackageReference Include="AllVerge.SystemPrimitives" Version="1.0.0-*" />
+  </ItemGroup>
+
+</Project>

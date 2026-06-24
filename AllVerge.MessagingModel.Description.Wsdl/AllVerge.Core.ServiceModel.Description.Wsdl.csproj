@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <StartupObject></StartupObject>
+    <ApplicationIcon />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="dotnet-svcutil" Version="1.0.4">
+      <PrivateAssets>compile</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AllVerge.Core\AllVerge.Core.csproj" />
+    <ProjectReference Include="..\AllVerge.Core.Markup.Markdown\AllVerge.Core.Markup.Markdown.csproj" />
+    <ProjectReference Include="..\AllVerge.Core.Model.XMLSchema\AllVerge.Core.Model.XMLSchema.csproj" />
+    <ProjectReference Include="..\AllVerge.Core.Resources\AllVerge.Core.Resources.csproj" />
+    <ProjectReference Include="..\AllVerge.Core.ServiceModel.Description\AllVerge.Core.ServiceModel.Description.csproj" />
+  </ItemGroup>
+
+</Project>

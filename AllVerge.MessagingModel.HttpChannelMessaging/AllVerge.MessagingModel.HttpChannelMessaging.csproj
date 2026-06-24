@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <VersionSuffix>$(VersionSuffix)</VersionSuffix>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <Target Name="NugetPackAutoVersioning" AfterTargets="Build">
+    <Exec Command="dotnet pack --version-suffix &quot;build.$([System.DateTime]::UtcNow.ToString(yyMMddHHmmss))&quot; -p:PackageVersion=$(VersionPrefix)-build.$([System.DateTime]::UtcNow.ToString(yyMMddHHmmss)) --no-build --configuration $(Configuration) --output $(SolutionDir)/nupkgs" />
+  </Target>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\MessagingFoundation\src\System.ServiceModel.Primitives\src\MessagingFoundation.Primitives.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\AllVerge.MessagingModel.ChannelMessaging\AllVerge.MessagingModel.ChannelMessaging\AllVerge.MessagingModel.ChannelMessaging.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\AllVerge.MessagingModel.MessagingFoundation\AllVerge.MessagingModel.MessagingFoundation.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="MessagingFoundation.Primitives" Version="6.0.0-build.241125064027" />
+    <PackageReference Include="AllVerge.MessagingModel.ChannelMessaging" Version="1.0.0-build.250222233939" />
+    <PackageReference Include="AllVerge.MessagingModel.MessagingFoundation" Version="1.0.0-build.250203010535" />
+  </ItemGroup>
+
+</Project>

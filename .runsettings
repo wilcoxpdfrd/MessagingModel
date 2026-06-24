@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <RunConfiguration>
+    <!-- Timeout in ms, 5 minutes -->
+    <TestSessionTimeout>300000</TestSessionTimeout>
+    <!-- Directory for test run reports. E.g. trx, coverage etc. -->
+    <ResultsDirectory>.\TestResults\</ResultsDirectory>
+    <!-- Working directory for test invocation. Results directory can be relative to this. Used by IDEs. -->
+    <SolutionDirectory>.\</SolutionDirectory>
+    <!-- Degree of parallelization, spawns n test hosts to run tests. -->
+    <MaxCpuCount>0</MaxCpuCount>
+    <!-- If true, an adapter should disable any test case parallelization. -->
+    <DisableParallelization>false</DisableParallelization>
+    <!-- If true, an adapter shouldn't create appdomains to run tests. -->
+    <DisableAppDomain>false</DisableAppDomain>
+    <!-- Filter out failing (wrong framwork, platform, runtime or activeissue) tests -->
+    <TestCaseFilter></TestCaseFilter>
+    <DotNetHostPath>C:\Program Files\dotnet\dotnet.exe</DotNetHostPath>
+    <TargetFrameworkVersion>net6.0</TargetFrameworkVersion>
+  </RunConfiguration>
+  <LoggerRunSettings>
+    <Loggers>
+      <Logger friendlyName="trx" />
+      <Logger friendlyName="html" />
+      <Logger friendlyName="console">
+        <Configuration>
+          <Verbosity>Minimal</Verbosity>
+        </Configuration>
+      </Logger>
+    </Loggers>
+  </LoggerRunSettings>
+  <DataCollectionRunSettings>
+    <DataCollectors>
+	  <!-- Enabling the code coverage data collector as a later task -->
+      <!--<DataCollector friendlyName="XPlat code coverage" enabled="false">
+        <Configuration>
+          <Include></Include>
+          <ExcludeByFile></ExcludeByFile>
+          <IncludeDirectory></IncludeDirectory>
+          <Format>opencover</Format>
+          <SingleHit>false</SingleHit>
+          <UseSourceLink>true</UseSourceLink>
+          <IncludeTestAssembly>false</IncludeTestAssembly>
+        </Configuration>
+      </DataCollector>-->
+      <DataCollector friendlyName="blame" enabled="true" />
+    </DataCollectors>
+  </DataCollectionRunSettings>
+</RunSettings>

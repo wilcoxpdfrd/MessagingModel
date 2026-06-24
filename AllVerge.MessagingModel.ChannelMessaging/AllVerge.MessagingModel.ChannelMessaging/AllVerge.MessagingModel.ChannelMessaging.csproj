@@ -1,0 +1,83 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net6.0;net8.0</TargetFrameworks>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix>$(VersionSuffix)</VersionSuffix>
+    <AssemblyName>AllVerge.MessagingModel.ChannelMessaging</AssemblyName>
+    <IsPackable>true</IsPackable>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IncludeSymbols>true</IncludeSymbols>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
+
+  <Target Name="NugetPackAutoVersioning" AfterTargets="Build">
+    <Exec Command="dotnet pack --version-suffix &quot;build.$([System.DateTime]::UtcNow.ToString(yyMMddHHmmss))&quot; -p:PackageVersion=$(VersionPrefix)-build.$([System.DateTime]::UtcNow.ToString(yyMMddHHmmss)) --no-build --configuration $(Configuration) --output $(SolutionDir)/nupkgs" />
+  </Target>
+
+  <ItemGroup>
+    <None Remove="AbstractProtocolMessagingContextMiddleware.cs~RF5b507673.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.WebSockets" Version="2.2.1" />
+    <PackageReference Include="Polly" Version="8.5.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="[2.2.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="[2.2.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="[2.2.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="[2.2.0,)" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="[2.2.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="[2.2.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="[2.2.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="[2.2.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="[2.2.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Logging.EventSource" Version="[2.2.0,)" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="[6.0.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="[6.0.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="[6.0.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="[6.0.0,)" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="[6.0.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="[6.0.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="[6.0.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="[6.0.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="[6.0.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Logging.EventSource" Version="[6.0.0,)" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="[8.0.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="[8.0.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="[8.0.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="[8.0.0,)" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="[8.0.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="[8.0.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="[8.0.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="[8.0.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="[8.0.0,)" />
+    <PackageReference Include="Microsoft.Extensions.Logging.EventSource" Version="[8.0.0,)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\MicrosoftPrimitives\AllVerge.MicrosoftPrimitives.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MessagingModel.MessagingApplication\MessagingModel.MessagingApplication\AllVerge.MessagingModel.MessagingApplication.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AllVerge.MicrosoftPrimitives" Version="1.0.0-build.250202181902" />
+    <PackageReference Include="AllVerge.MessagingModel.MessagingApplication" Version="1.0.0-build.250222233405" />
+  </ItemGroup>
+
+</Project>

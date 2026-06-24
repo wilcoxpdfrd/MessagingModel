@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en" target-language="zh-Hant" original="../AMMMYR.resx">
+    <body>
+      <trans-unit id="YamlCouldNotDetermineElementScope">
+        <source>Could not determine element scope.</source>
+        <target state="new">Could not determine element scope.</target>
+        <note />
+      </trans-unit>
+      <trans-unit id="YamlElementMissingPreceedingIndent">
+        <source>Element missing preceeding indent.</source>
+        <target state="new">Element missing preceeding indent.</target>
+        <note />
+      </trans-unit>
+      <trans-unit id="YamlEncodingNotSupported">
+        <source>Encoding not supported in YAML. UTF-8, Unicode, and BigEndianUnicode are the only supported encodings.</source>
+        <target state="new">Encoding not supported in YAML. UTF-8, Unicode, and BigEndianUnicode are the only supported encodings.</target>
+        <note />
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

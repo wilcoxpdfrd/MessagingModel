@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix>$(VersionSuffix)</VersionSuffix>
+    <IsPackable>true</IsPackable>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IncludeSymbols>true</IncludeSymbols>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
+
+  <Target Name="NugetPackAutoVersioning" AfterTargets="Build">
+    <Exec Command="dotnet pack --version-suffix &quot;build.$([System.DateTime]::UtcNow.ToString(yyMMddHHmmss))&quot; -p:PackageVersion=$(VersionPrefix)-build.$([System.DateTime]::UtcNow.ToString(yyMMddHHmmss)) --no-build --configuration $(Configuration) --output $(SolutionDir)/nupkgs" />
+  </Target>
+
+  <Target Name="ChangeAliasesOfReferences" BeforeTargets="FindReferenceAssembliesForReferences;ResolveReferences">
+    <ItemGroup>
+      <ReferencePath Condition="'%(FileName)' == 'System.ServiceModel.Primitives'">
+        <!-- Give the desired alias to the file here -->
+        <Aliases>ServiceModelPrimitives</Aliases>
+      </ReferencePath>
+    </ItemGroup>
+  </Target>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AllVerge.MessagingModel.MessagingFoundation\AllVerge.MessagingModel.MessagingFoundation.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PolicyPrimitives\AllVerge.PolicyPrimitives.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\AllVerge.MessagingModel.Markup.Html\AllVerge.MessagingModel.Markup.Html.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\AllVerge.MessagingModel.Markup.Json\AllVerge.MessagingModel.Markup.Json.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\AllVerge.MessagingModel.Markup.Yaml\AllVerge.MessagingModel.Markup.Yaml.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\AllVerge.MessagingModel.Markup.Xml\AllVerge.MessagingModel.Markup.Xml.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\AllVerge.MessagingModel.ServicePrimitives\AllVerge.MessagingModel.ServicePrimitives.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AllVerge.MessagingModel.MessagingFoundation" Version="1.0.0-build.250203010535" />
+    <PackageReference Include="AllVerge.PolicyPrimitives" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.DataModel.Primitives" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.DataModel.IETFTypes" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.DataModel.JsonSchema" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.DataModel.RamlTypes" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.DataModel.SwaggerTypes" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.DataModel.YamlTypes" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.DataModel.XmlSchema" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.MessagingModel.Markup.Html" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.MessagingModel.Markup.Json" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.MessagingModel.Markup.Yaml" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.MessagingModel.Markup.Xml" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.MessagingModel.ServicePrimitives" Version="1.0.0-*" />
+  </ItemGroup>
+
+</Project>

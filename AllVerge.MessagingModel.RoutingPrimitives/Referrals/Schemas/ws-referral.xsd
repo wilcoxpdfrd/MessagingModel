@@ -1,0 +1,263 @@
+<?xml version='1.0'?>
+<!-- XML Schema for WS-Referral -->
+<!--
+Copyright 2001 Microsoft Corporation. All rights reserved.
+
+The presentation, distribution or other dissemination of the
+information contained herein by Microsoft is not a license,
+either expressly or impliedly, to any intellectual property owned or
+controlled by Microsoft.
+
+This document and the information contained herein is provided on an
+"AS IS" basis and to the maximum extent permitted by applicable law,
+Microsoft provides the document AS IS AND WITH ALL FAULTS, and hereby
+disclaims all other warranties and conditions, either express, implied
+or statutory, including, but not limited to, any (if any) implied
+warranties, duties or conditions of merchantability, of fitness for a
+particular purpose, of accuracy or completeness of responses, of
+results, of workmanlike effort, of lack of viruses, and of lack of
+negligence, all with regard to the document. ALSO, THERE IS NO
+WARRANTY OR CONDITION OF TITLE, QUIET ENJOYMENT, QUIET POSSESSION,
+CORRESPONDENCE TO DESCRIPTION OR NON-INFRINGEMENT WITH REGARD TO THE
+DOCUMENT.
+
+IN NO EVENT WILL MICROSOFT BE LIABLE TO ANY OTHER PARTY FOR THE COST
+OF PROCURING SUBSTITUTE GOODS OR SERVICES, LOST PROFITS, LOSS OF USE,
+LOSS OF DATA, OR ANY INCIDENTAL, CONSEQUENTIAL, DIRECT, INDIRECT, OR
+SPECIAL DAMAGES WHETHER UNDER CONTRACT, TORT, WARRANTY, OR OTHERWISE,
+ARISING IN ANY WAY OUT OF THIS OR ANY OTHER AGREEMENT RELATING TO THIS
+DOCUMENT, WHETHER OR NOT SUCH PARTY HAD ADVANCE NOTICE OF THE
+POSSIBILITY OF SUCH DAMAGES. 
+-->
+
+<!DOCTYPE schema PUBLIC "-//W3C//DTD XMLSCHEMA 200102//EN" "http://www.w3.org/2001/XMLSchema.dtd" >
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.xmlsoap.org/ws/2001/10/referral" targetNamespace="http://schemas.xmlsoap.org/ws/2001/10/referral" finalDefault="#all"
+elementFormDefault="qualified" version="0.1">
+
+  <!-- Common types and attributes -->
+  <xs:attributeGroup name="commonAttributes">
+    <xs:anyAttribute namespace="##other" processContents="lax"/>
+  </xs:attributeGroup>
+
+  <xs:complexType name="uri_t">
+    <xs:annotation>
+      <xs:documentation>Basic type used for carrying URIs throughout</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="xs:anyURI">
+        <xs:attributeGroup ref="tns:commonAttributes"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="ttl_t">
+    <xs:annotation>
+      <xs:documentation>Basic type used for carrying time-to-live (ttl) in milliseconds</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="xs:unsignedLong">
+        <xs:attributeGroup ref="tns:commonAttributes"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!-- WS-Referral statement -->
+  <xs:element name="ref" type="tns:ref_t"/>
+  <xs:complexType name="ref_t">
+    <xs:sequence>
+      <xs:annotation>
+        <xs:documentation>Structure of a referral statement</xs:documentation>
+      </xs:annotation>
+      <xs:element ref="tns:for"/>
+      <xs:element ref="tns:if"/>
+      <xs:element ref="tns:go"/>
+      <xs:element ref="tns:refId"/>
+      <xs:element ref="tns:desc" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="tns:commonAttributes"/>
+  </xs:complexType>
+
+  <xs:element name="for" type="tns:for_t"/>
+  <xs:complexType name="for_t">
+    <xs:sequence>
+      <xs:annotation>
+        <xs:documentation>
+          The SOAP actors for which this statement is
+          intended
+        </xs:documentation>
+      </xs:annotation>
+      <xs:element name="exact" type="tns:uri_t" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="prefix" type="tns:uri_t" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="tns:commonAttributes"/>
+  </xs:complexType>
+
+  <xs:element name="if" type="tns:if_t"/>
+  <xs:complexType name="if_t">
+    <xs:sequence>
+      <xs:annotation>
+        <xs:documentation>Conditions for this statement</xs:documentation>
+      </xs:annotation>
+      <xs:element ref="tns:ttl" minOccurs="0"/>
+      <xs:element ref="tns:invalidates" minOccurs="0"/>
+      <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="tns:commonAttributes"/>
+  </xs:complexType>
+
+  <xs:element name="go" type="tns:go_t"/>
+  <xs:complexType name="go_t">
+    <xs:sequence>
+      <xs:annotation>
+        <xs:documentation>SOAP routers referred to by this statement</xs:documentation>
+      </xs:annotation>
+      <xs:element name="via" type="tns:uri_t" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="tns:commonAttributes"/>
+  </xs:complexType>
+
+  <xs:element name="refId" type="tns:uri_t">
+    <xs:annotation>
+      <xs:documentation>
+        Globally unique URI for this instance of this
+        statement
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="desc" type="tns:desc_t"/>
+  <xs:complexType name="desc_t">
+    <xs:sequence>
+      <xs:annotation>
+        <xs:documentation>Descriptive information about the statement, etc.</xs:documentation>
+      </xs:annotation>
+      <xs:element ref="tns:refAddr" minOccurs="0"/>
+      <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="tns:commonAttributes"/>
+  </xs:complexType>
+
+  <!-- Condition describing the time-to-live of the WS-Referral statement -->
+  <xs:element name="ttl" type="tns:ttl_t">
+    <xs:annotation>
+      <xs:documentation>Time-to-Live of a statement</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <!-- Condition describing the statements invalidated by this statement -->
+  <xs:element name="invalidates" type="tns:invalidates_t"/>
+  <xs:complexType name="invalidates_t">
+    <xs:sequence>
+      <xs:annotation>
+        <xs:documentation>List of other statements that this statement invalidates</xs:documentation>
+      </xs:annotation>
+      <xs:element name="rid" type="tns:uri_t" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="tns:commonAttributes"/>
+  </xs:complexType>
+
+  <!-- Information entry describing the address of the WS-Referral statment -->
+  <xs:element name="refAddr" type="tns:uri_t">
+    <xs:annotation>
+      <xs:documentation>Address this statement may be obtained from</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <!-- WS-Referral header -->
+  <xs:element name="referrals" type="tns:referrals_t"/>
+  <xs:complexType name="referrals_t">
+    <xs:sequence>
+      <xs:annotation>
+        <xs:documentation>Structure of a WS-Referral SOAP header block</xs:documentation>
+      </xs:annotation>
+      <xs:element ref="tns:ref" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="tns:commonAttributes"/>
+  </xs:complexType>
+
+  <!-- WS-Referral query -->
+  <xs:element name="query" type="tns:query_t"/>
+  <xs:complexType name="query_t">
+    <xs:sequence>
+      <xs:annotation>
+        <xs:documentation>Structure of a WS-Referral query message</xs:documentation>
+      </xs:annotation>
+      <xs:element ref="tns:for"/>
+      <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="tns:commonAttributes"/>
+  </xs:complexType>
+
+  <!-- WS-Referral query response -->
+  <xs:element name="queryResponse" type="tns:queryResponse_t"/>
+  <xs:complexType name="queryResponse_t">
+    <xs:sequence>
+      <xs:annotation>
+        <xs:documentation>Structure of a WS-Referral query response message</xs:documentation>
+      </xs:annotation>
+      <xs:element ref="tns:ref" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="tns:commonAttributes"/>
+  </xs:complexType>
+
+  <!-- WS-Referral registration -->
+  <xs:element name="registration" type="tns:registration_t"/>
+  <xs:complexType name="registration_t">
+    <xs:sequence>
+      <xs:annotation>
+        <xs:documentation>Structure of a WS-Referral registration message</xs:documentation>
+      </xs:annotation>
+      <xs:element ref="tns:ref"/>
+      <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="tns:commonAttributes"/>
+  </xs:complexType>
+
+  <!-- Positive WS-Referral registration response -->
+  <xs:element name="registrationResponse" type="tns:registrationResponse_t"/>
+  <xs:complexType name="registrationResponse_t">
+    <xs:sequence>
+      <xs:annotation>
+        <xs:documentation>Structure of a WS-Referral registration message</xs:documentation>
+      </xs:annotation>
+      <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="tns:commonAttributes"/>
+  </xs:complexType>
+
+  <!-- Fault WS-Referral registration response detail elements -->
+  <xs:element name="duplicate" type="tns:duplicate_t"/>
+  <xs:complexType name="duplicate_t">
+    <xs:sequence>
+      <xs:annotation>
+        <xs:documentation>Statement already registered</xs:documentation>
+      </xs:annotation>
+    </xs:sequence>
+    <xs:attributeGroup ref="tns:commonAttributes"/>
+  </xs:complexType>
+
+  <xs:element name="notInvalidated" type="tns:notInvalidated_t"/>
+  <xs:complexType name="notInvalidated_t">
+    <xs:sequence>
+      <xs:annotation>
+        <xs:documentation>List of statements not invalidated</xs:documentation>
+      </xs:annotation>
+      <xs:element name="rid" type="tns:uri_t" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="tns:commonAttributes"/>
+  </xs:complexType>
+
+  <xs:element name="maxTtl" type="tns:maxTtl_t"/>
+  <xs:complexType name="maxTtl_t">
+    <xs:annotation>
+      <xs:documentation>Max acceptable TTL for statements</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="xs:unsignedLong">
+        <xs:attributeGroup ref="tns:commonAttributes"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+</xs:schema>

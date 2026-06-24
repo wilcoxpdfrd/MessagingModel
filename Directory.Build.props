@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+	<PropertyGroup>
+		<SolutionDir>$(MSBuildThisFileDirectory)</SolutionDir>
+		<!-- <ImportNetSdkFromRepoToolset>false</ImportNetSdkFromRepoToolset> -->
+		<!-- <MSBuildExtensionsPath>C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild</MSBuildExtensionsPath> -->
+	</PropertyGroup>
+
+	<!-- <Import Project="Sdk.props" Sdk="Microsoft.DotNet.Arcade.Sdk" /> -->
+
+</Project>

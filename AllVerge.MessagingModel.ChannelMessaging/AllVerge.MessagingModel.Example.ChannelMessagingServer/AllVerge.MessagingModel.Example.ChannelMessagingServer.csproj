@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <IsPackable>false</IsPackable>
+    <StartupObject>AllVerge.MessagingModel.Example.ChannelMessagingServer.ExampleListenerProgram</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AllVerge.MessagingModel.ChannelMessaging\AllVerge.MessagingModel.ChannelMessaging.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="AllVerge.MessagingModel.ChannelMessaging" Version="1.0.0-build.250222233939" />
+  </ItemGroup>
+
+</Project>

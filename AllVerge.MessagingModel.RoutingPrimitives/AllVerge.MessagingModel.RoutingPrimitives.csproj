@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup Label="MultilingualAppToolkit">
+    <MultilingualAppToolkitVersion>4.0</MultilingualAppToolkitVersion>
+    <MultilingualFallbackLanguage>en-US</MultilingualFallbackLanguage>
+    <TranslationReport Condition="'$(Configuration)' == 'Release'">true</TranslationReport>
+    <SuppressPseudoWarning Condition="'$(Configuration)' == 'Debug'">true</SuppressPseudoWarning>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix>$(VersionSuffix)</VersionSuffix>
+    <AssemblyName>AllVerge.MessagingModel.RoutingPrimitives</AssemblyName>
+    <IsPackable>true</IsPackable>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IncludeSymbols>true</IncludeSymbols>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets" Label="MultilingualAppToolkit" Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\v$(MultilingualAppToolkitVersion)\Microsoft.Multilingual.ResxResources.targets')" />
+  <Target Name="NugetPackAutoVersioning" AfterTargets="Build">
+    <Exec Command="dotnet pack --version-suffix &quot;build.$([System.DateTime]::UtcNow.ToString(yyMMddHHmmss))&quot; -p:PackageVersion=$(VersionPrefix)-build.$([System.DateTime]::UtcNow.ToString(yyMMddHHmmss)) --no-build --configuration $(Configuration) --output $(SolutionDir)/nupkgs" />
+  </Target>
+  <ItemGroup>
+    <None Remove="Resources\xlf\*.xlf" />
+  </ItemGroup>
+  <ItemGroup>
+    <XliffResource Include="MultilingualResources\*.xlf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PolicyPrimitives\AllVerge.PolicyPrimitives.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SystemPrimitives\AllVerge.SystemPrimitives.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\AllVerge.MessagingModel.Markup.Xml\AllVerge.MessagingModel.Markup.Xml.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\AllVerge.MessagingModel.MessagingFoundation\AllVerge.MessagingModel.MessagingFoundation.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AllVerge.PolicyPrimitives" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.SystemPrimitives" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.MessagingModel.Markup.Xml" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.MessagingModel.MessagingFoundation" Version="1.0.0-build.250203010535" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Referrals\Schemas\ws-referral.cs">
+      <DesignTime>True</DesignTime>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ws-referral.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\AMMRPR.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AMMRPR.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\AMMRPR.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AMMRPR.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>AllVerge.MessagingModel.RoutingPrimitives</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Referrals\Schemas\ws-referral.xsd">
+      <Generator>VSXSDTypesGenerator</Generator>
+      <LastGenOutput>ws-referral.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\xlf\" />
+  </ItemGroup>
+</Project>

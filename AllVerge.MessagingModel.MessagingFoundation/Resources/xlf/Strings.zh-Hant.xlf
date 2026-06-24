@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en" target-language="zh-Hant" original="../Strings.resx">
+    <body>
+      <trans-unit id="InvalidHttpMessageFormat">
+        <source>Incoming message for operation '{0}' (contract '{1}' with namespace '{2}') contains an unrecognized http body format value '{3}'. The expected body format value is '{4}'.</source>
+        <target state="new">Incoming message for operation '{0}' (contract '{1}' with namespace '{2}') contains an unrecognized http body format value '{3}'. The expected body format value is '{4}'.</target>
+        <note />
+      </trans-unit>
+      <trans-unit id="MethodCannotHaveBody">
+        <source>Operation '{0}' in contract '{1}' uses '{2}', but also has body parameter '{3}'. {2} operations cannot have a body. Either make the parameter '{3}' a UriTemplate parameter, or switch to another ResourceActionAttribute that allows a body.</source>
+        <target state="new">Operation '{0}' in contract '{1}' uses '{2}', but also has body parameter '{3}'. {2} operations cannot have a body. Either make the parameter '{3}' a UriTemplate parameter, or switch to another ResourceActionAttribute that allows a body.</target>
+        <note />
+      </trans-unit>
+      <trans-unit id="MethodCannotHaveMCParameter">
+        <source>Operation '{0}' in contract '{1}' uses '{2}', but also has a parameter of MessageContract type '{3}'. {2} operations cannot have a body. To use a MessageContract parameter type, switch to a ResourceActionAttribute that allows a body.</source>
+        <target state="new">Operation '{0}' in contract '{1}' uses '{2}', but also has a parameter of MessageContract type '{3}'. {2} operations cannot have a body. To use a MessageContract parameter type, switch to a ResourceActionAttribute that allows a body.</target>
+        <note />
+      </trans-unit>
+      <trans-unit id="SFxInvalidCallbackContractType">
+        <source>The CallbackContract {0} is invalid because it is not decorated with a ResourceContractAttribute or CallBackResponseContractAttribute.</source>
+        <target state="new">The CallbackContract {0} is invalid because it is not decorated with a ResourceContractAttribute or CallBackResponseContractAttribute.</target>
+        <note />
+      </trans-unit>
+      <trans-unit id="SFxMessageVersionNotSupportedOperation">
+        <source>Message Version '{0}' is not supported for the operation.</source>
+        <target state="new">Message Version '{0}' is not supported for the operation.</target>
+        <note />
+      </trans-unit>
+      <trans-unit id="SerializingMessageVersionNotSupportedByFormatter">
+        <source>The formatter '{0}' does not support serializing MessageVersion '{1}'.</source>
+        <target state="new">The formatter '{0}' does not support serializing MessageVersion '{1}'.</target>
+        <note />
+      </trans-unit>
+      <trans-unit id="SerializingParametersNotSupportedByFormatter">
+        <source>The formatter '{0}' does not support serializing a non-zero number of parameters.</source>
+        <target state="new">The formatter '{0}' does not support serializing a non-zero number of parameters.</target>
+        <note />
+      </trans-unit>
+      <trans-unit id="ServiceOperationMustSpecifyAtLeastOneMessage">
+        <source>Operations must specify at least one message.</source>
+        <target state="new">Operations must specify at least one message.</target>
+        <note />
+      </trans-unit>
+      <trans-unit id="ServiceOperationUnexpectedMessage">
+        <source>Unexpected operation message direction; expected '{0}', found '{1}'.</source>
+        <target state="new">Unexpected operation message direction; expected '{0}', found '{1}'.</target>
+        <note />
+      </trans-unit>
+      <trans-unit id="ServiceOperationsMarkedWithIsInitiatingMustNotSpecifyRequestMessage">
+        <source>Operations marked with IsInitiating=true must specify a request message.</source>
+        <target state="new">Operations marked with IsInitiating=true must specify a request message.</target>
+        <note />
+      </trans-unit>
+      <trans-unit id="ServiceOperationsMarkedWithResourceActionAttributeMustNotSpecifyRequestMessage">
+        <source>Operations marked with '{0} must not specify a request message.</source>
+        <target state="new">Operations marked with '{0} must not specify a request message.</target>
+        <note />
+      </trans-unit>
+      <trans-unit id="ServiceOperationsMarkedWithResourceActionAttributeMustNotSpecifyResponseMessage">
+        <source>Operations marked with '{0} must not specify a response message.</source>
+        <target state="new">Operations marked with '{0} must not specify a response message.</target>
+        <note />
+      </trans-unit>
+      <trans-unit id="TransferMessageEncodingMessagePropertyToString">
+        <source>TransferMessageEncodingMessageProperty: MessageEncoding={0}.</source>
+        <target state="new">TransferMessageEncodingMessageProperty: MessageEncoding={0}.</target>
+        <note />
+      </trans-unit>
+      <trans-unit id="UnknownTransferEncodingFormat">
+        <source>The incoming transfer message, with content type '{0}', was mapped to an unknown content format '{1}' by the ContentTypeMapper. Configure the TransferMessageEncodingBindingElement with a ContentTypeMapper that maps the content type to a known TransferMessageEncodings value.</source>
+        <target state="new">The incoming transfer message, with content type '{0}', was mapped to an unknown content format '{1}' by the ContentTypeMapper. Configure the TransferMessageEncodingBindingElement with a ContentTypeMapper that maps the content type to a known TransferMessageEncodings value.</target>
+        <note />
+      </trans-unit>
+      <trans-unit id="UnrecognizedHttpMessageFormat">
+        <source>The incoming message has an unexpected message format '{0}'. The expected message formats for the operation are {1}.</source>
+        <target state="new">The incoming message has an unexpected message format '{0}'. The expected message formats for the operation are {1}.</target>
+        <note />
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

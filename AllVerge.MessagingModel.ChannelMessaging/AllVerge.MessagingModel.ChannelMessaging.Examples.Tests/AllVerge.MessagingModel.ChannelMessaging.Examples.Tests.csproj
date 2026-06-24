@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AllVerge.MessagingModel.ZeroMQChannelMessaging\AllVerge.MessagingModel.ZeroMQChannelMessaging.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\MessagingFoundation\src\System.ServiceModel.Primitives\src\MessagingFoundation.Primitives.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AllVerge.MessagingModel.Example.ZeroMQTcpDuplexListenerExample\AllVerge.MessagingModel.Example.ZeroMQTcpDuplexListenerExample.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AllVerge.MessagingModel.ZeroMQChannelMessaging" Version="1.0.0-*" />
+    <PackageReference Include="MessagingFoundation.Primitives" Version="6.0.0-*" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
+    <PackageReference Include="xunit" Version="2.4.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="3.2.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <Target Name="ChangeAliasesOfReferences" BeforeTargets="FindReferenceAssembliesForReferences;ResolveReferences">
+    <ItemGroup>
+      <ReferencePath Condition="'%(FileName)' == 'System.ServiceModel.Primitives'">
+        <!-- Give the desired alias to the file here -->
+        <Aliases>ServiceModelPrimitives</Aliases>
+      </ReferencePath>
+    </ItemGroup>
+  </Target>
+
+</Project>

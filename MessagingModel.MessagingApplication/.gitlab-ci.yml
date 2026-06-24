@@ -1,0 +1,77 @@
+stages:
+  - build
+  - test
+  - deploy
+
+build_debug_job:
+  stage: build
+  image: gitlab-registry.nordstrom.com/cicd/images/dotnet/framework-sdk:4.8-windowsservercore-ltsc2019
+  artifacts:
+    untracked: true
+    paths:
+    - LZ.Common.Application\bin\Debug\netstandard2.0\publish\*.*
+    - LZ.Common.Application.UnitTests\bin\Debug\netcoreapp2.1\*.*
+    expire_in: 1 day
+  script:
+  - '# Note: source ${ARTIFACTORY_SOURCE_NAME} at ${ARTIFACTORY_URL} MUST already exist in Nuget.config and SHOULD be disabled'
+  - 'nuget sources Enable -name ${ARTIFACTORY_SOURCE_NAME} -config Nuget.config'
+  - 'nuget sources update -name ${ARTIFACTORY_SOURCE_NAME} -username ${ARTIFACTORY_USER} -password ${ARTIFACTORY_USER_API_KEY} -config Nuget.config'
+  - 'nuget setapikey ${ARTIFACTORY_USER}:${ARTIFACTORY_USER_API_KEY} -source ${ARTIFACTORY_URL} -config Nuget.config -Verbosity quiet'
+  - 'nuget setapikey ${ARTIFACTORY_USER}:${ARTIFACTORY_USER_API_KEY} -source ${ARTIFACTORY_V3_URL} -config Nuget.config -Verbosity quiet'
+  - 'echo "restoring packages..."'
+  - 'dotnet restore LZ.Common.Application.sln --configfile ${CI_PROJECT_DIR}\Nuget.config -v n'
+  - 'echo "building Debug configuration ..."'
+  - 'dotnet build -c Debug --configfile ${CI_PROJECT_DIR}\Nuget.config -v n'
+  - 'dotnet publish LZ.Common.Application'
+  tags:
+  - windows
+
+build_release_job:
+  stage: build
+  image: gitlab-registry.nordstrom.com/cicd/images/dotnet/framework-sdk:4.8-windowsservercore-ltsc2019
+  artifacts:
+    untracked: true
+    paths:
+    - LZ.Common.Application\bin\Release\LZ.Common.Application.1.0.0.nupkg
+    expire_in: 1 day
+  script:
+  - '# Note: source ${ARTIFACTORY_SOURCE_NAME} at ${ARTIFACTORY_URL} MUST already exist in Nuget.config and SHOULD be disabled'
+  - 'nuget sources Enable -name ${ARTIFACTORY_SOURCE_NAME} -config Nuget.config'
+  - 'nuget sources update -name ${ARTIFACTORY_SOURCE_NAME} -username ${ARTIFACTORY_USER} -password ${ARTIFACTORY_USER_API_KEY} -config Nuget.config'
+  - 'nuget setapikey ${ARTIFACTORY_USER}:${ARTIFACTORY_USER_API_KEY} -source ${ARTIFACTORY_URL} -config Nuget.config -Verbosity quiet'
+  - 'nuget setapikey ${ARTIFACTORY_USER}:${ARTIFACTORY_USER_API_KEY} -source ${ARTIFACTORY_V3_URL} -config Nuget.config -Verbosity quiet'
+  - 'echo "restoring packages..."'
+  - 'dotnet restore LZ.Common.Application.sln --configfile ${CI_PROJECT_DIR}\Nuget.config -v n'
+  - 'echo "building Release configuration ..."'
+  - 'dotnet build -c Release -v n'
+  tags:
+  - windows
+
+test_job:
+  stage: test
+  image: gitlab-registry.nordstrom.com/cicd/images/dotnet/framework-sdk:4.8-windowsservercore-ltsc2019
+  dependencies:
+  - build_debug_job
+  script:
+  - 'echo testing...'
+  - 'xcopy LZ.Common.Application\bin\Debug\netstandard2.0\publish\*.* LZ.Common.Application.UnitTests\bin\Debug\netcoreapp2.1\*.* /y'
+  - 'dotnet test LZ.Common.Application.UnitTests --no-build -v n'
+  tags:
+  - windows
+
+deploy_job:
+  stage: deploy
+  image: gitlab-registry.nordstrom.com/cicd/images/dotnet/framework-sdk:4.8-windowsservercore-ltsc2019
+  dependencies:
+  - build_release_job
+  script:
+  - '# Note: source ${ARTIFACTORY_SOURCE_NAME} at ${ARTIFACTORY_URL} MUST already exist in Nuget.config and SHOULD be disabled'
+  - 'nuget sources Enable -name ${ARTIFACTORY_SOURCE_NAME} -config Nuget.config'
+  - 'nuget sources update -name ${ARTIFACTORY_SOURCE_NAME} -username ${ARTIFACTORY_USER} -password ${ARTIFACTORY_USER_API_KEY} -config Nuget.config'
+  - 'nuget sources add -name Artifactory-LZ.Common.Application -source ${ARTIFACTORY_URL}/LZ.Common.Application/1.0.0 -username ${ARTIFACTORY_USER} -password ${ARTIFACTORY_USER_API_KEY} -config Nuget.config'
+  - 'nuget setapikey ${ARTIFACTORY_USER}:${ARTIFACTORY_USER_API_KEY} -source ${ARTIFACTORY_URL} -config Nuget.config -Verbosity quiet'
+  - 'nuget setapikey ${ARTIFACTORY_USER}:${ARTIFACTORY_USER_API_KEY} -source ${ARTIFACTORY_V3_URL} -config Nuget.config -Verbosity quiet'
+  - 'cd LZ.Common.Application\bin\Release'
+  - 'nuget push LZ.Common.Application.1.0.0.nupkg -source Artifactory-LZ.Common.Application -config ..\..\..\Nuget.config -Verbosity detailed'
+  tags:
+  - windows

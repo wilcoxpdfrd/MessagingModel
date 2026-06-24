@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <StartupObject>AllVerge.MessageProcessor.ZeroMQ.TcpDuplexListenerExample.ZeroMQTcpDuplexExampleProgram</StartupObject>
+  </PropertyGroup>
+
+  <Target Name="ChangeAliasesOfReferences" BeforeTargets="FindReferenceAssembliesForReferences;ResolveReferences">
+    <ItemGroup>
+      <ReferencePath Condition="'%(FileName)' == 'System.ServiceModel.Primitives'">
+        <!-- Give the desired alias to the file here -->
+        <Aliases>ServiceModelPrimitives</Aliases>
+      </ReferencePath>
+    </ItemGroup>
+  </Target>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AllVerge.MessagingModel.Description\AllVerge.MessagingModel.Description.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AllVerge.MessagingModel.MessagingFoundation.Client\AllVerge.MessagingModel.MessagingFoundation.Client.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AllVerge.MessagingModel.ZeroMQChannelMessaging\AllVerge.MessagingModel.ZeroMQChannelMessaging.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AllVerge.MessagingModel.BaseService\AllVerge.MessagingModel.BaseService.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.CommandLineUtils" Version="1.1.1" />    
+    <PackageReference Include="AllVerge.MessagingModel.Description" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.MessagingModel.MessagingFoundation.Client" Version="1.0.0-build.241128202839" />
+    <PackageReference Include="AllVerge.MessagingModel.ZeroMQChannelMessaging" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.MessagingModel.BaseService" Version="1.0.0-*" />
+  </ItemGroup>
+
+</Project>

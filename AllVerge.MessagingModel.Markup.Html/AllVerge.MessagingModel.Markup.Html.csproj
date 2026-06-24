@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <VersionSuffix>$(VersionSuffix)</VersionSuffix>
+    <AssemblyName>AllVerge.MessagingModel.Markup.Html</AssemblyName>
+    <IsPackable>true</IsPackable>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IncludeSymbols>true</IncludeSymbols>
+  </PropertyGroup>
+
+  <Target Name="NugetPackAutoVersioning" AfterTargets="Build">
+    <Exec Command="dotnet pack --version-suffix &quot;build.$([System.DateTime]::UtcNow.ToString(yyMMddHHmmss))&quot; -p:PackageVersion=$(VersionPrefix)-build.$([System.DateTime]::UtcNow.ToString(yyMMddHHmmss)) --no-build --configuration $(Configuration) --output $(SolutionDir)/nupkgs" />
+  </Target>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\SystemPrimitives\AllVerge.SystemPrimitives.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\AllVerge.MessagingModel.MarkupPrimitives\AllVerge.MessagingModel.MarkupPrimitives.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MessagingFoundation\src\System.ServiceModel.Primitives\src\MessagingFoundation.Primitives.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="AllVerge.SystemPrimitives" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.MessagingModel.MarkupPrimitives" Version="1.0.0-*" />
+    <PackageReference Include="MessagingFoundation.Primitives" Version="6.0.0-build.*" />
+  </ItemGroup>
+
+</Project>

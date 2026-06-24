@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AllVerge.Core\AllVerge.Core.csproj" />
+    <ProjectReference Include="..\AllVerge.Core.Model.XMLSchema\AllVerge.Core.Model.XMLSchema.csproj" />
+    <ProjectReference Include="..\AllVerge.Core.ServiceModel.Description\AllVerge.Core.ServiceModel.Description.csproj" />
+  </ItemGroup>
+
+</Project>

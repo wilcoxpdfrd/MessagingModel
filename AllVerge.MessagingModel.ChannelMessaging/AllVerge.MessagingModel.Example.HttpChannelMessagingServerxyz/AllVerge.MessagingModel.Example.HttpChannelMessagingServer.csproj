@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <IsPackable>false</IsPackable>
+    <StartupObject>AllVerge.MessagingModel.Example.HttpChannelMessagingServer.ExampleListenerProgram</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AllVerge.MessagingModel.MessagingFoundation.Client\AllVerge.MessagingModel.MessagingFoundation.Client.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AllVerge.MessagingModel.HttpChannelMessaging\AllVerge.MessagingModel.HttpChannelMessaging.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AllVerge.MessagingModel.BaseService\AllVerge.MessagingModel.BaseService.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="AllVerge.MessagingModel.MessagingFoundation.Client" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.MessagingModel.HttpChannelMessaging" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.MessagingModel.BaseService" Version="1.0.0-*" />
+  </ItemGroup>
+
+</Project>

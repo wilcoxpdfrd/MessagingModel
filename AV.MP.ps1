@@ -1,0 +1,2 @@
+Update-Package -ProjectName AllVerge.MessagingModel.ChannelMessaging -Id AllVerge.MicrosoftPrimitives -IncludePrerelease
+Update-Package -ProjectName AllVerge.MessagingModel.MessagingApplication -Id AllVerge.MicrosoftPrimitives -IncludePrerelease

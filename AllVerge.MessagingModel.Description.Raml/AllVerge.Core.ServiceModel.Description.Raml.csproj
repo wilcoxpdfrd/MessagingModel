@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AllVerge.Core\AllVerge.Core.csproj" />
+    <ProjectReference Include="..\AllVerge.Core.Markup.Yaml\AllVerge.Core.Markup.Yaml.csproj" />
+    <ProjectReference Include="..\AllVerge.Core.Model.RamlTypes\AllVerge.Core.Model.RamlTypes.csproj" />
+    <ProjectReference Include="..\AllVerge.Core.ServiceModel.Description\AllVerge.Core.ServiceModel.Description.csproj" />
+  </ItemGroup>
+
+</Project>

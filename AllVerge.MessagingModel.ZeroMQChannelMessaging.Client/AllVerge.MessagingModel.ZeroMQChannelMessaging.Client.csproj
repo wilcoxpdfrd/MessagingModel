@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <VersionSuffix>$(VersionSuffix)</VersionSuffix>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <Target Name="NugetPackAutoVersioning" AfterTargets="Build">
+    <Exec Command="dotnet pack --version-suffix &quot;build.$([System.DateTime]::UtcNow.ToString(yyMMddHHmmss))&quot; -p:PackageVersion=$(VersionPrefix)-build.$([System.DateTime]::UtcNow.ToString(yyMMddHHmmss)) --no-build --configuration $(Configuration) --output $(SolutionDir)/nupkgs" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="NetMQ" Version="4.0.0.272-pre" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AllVerge.MessagingModel.MessagingFoundation.Client" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.MessagingModel.ZeroMQChannelMessaging" Version="1.0.0-*" />
+  </ItemGroup>
+
+    <Target Name="ChangeAliasesOfReferences" BeforeTargets="FindReferenceAssembliesForReferences;ResolveReferences">
+    <ItemGroup>
+      <ReferencePath Condition="'%(FileName)' == 'System.ServiceModel.Primitives'">
+        <!-- Give the desired alias to the file here -->
+        <Aliases>ServiceModelPrimitives</Aliases>
+      </ReferencePath>
+    </ItemGroup>
+  </Target>
+
+</Project>

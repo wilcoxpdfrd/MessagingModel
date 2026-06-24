@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ServiceModel.Example.Processor": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

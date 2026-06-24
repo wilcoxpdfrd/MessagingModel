@@ -1,0 +1,151 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <VersionSuffix>$(VersionSuffix)</VersionSuffix>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <Target Name="NugetPackAutoVersioning" AfterTargets="Build">
+    <Exec Command="dotnet pack --version-suffix &quot;build.$([System.DateTime]::UtcNow.ToString(yyMMddHHmmss))&quot; -p:PackageVersion=$(VersionPrefix)-build.$([System.DateTime]::UtcNow.ToString(yyMMddHHmmss)) --no-build --configuration $(Configuration) --output $(SolutionDir)/nupkgs" />
+  </Target>
+
+  <ItemGroup>
+    <Compile Remove="Channels\IZeroMQChannelRequest.cs" />
+    <Compile Remove="Channels\ZeroMQBindings.cs" />
+    <Compile Remove="Channels\ZeroMQChannelUtilities.cs" />
+    <Compile Remove="Channels\ZeroMQIpcConnectionOrientedTransportBindingElement.cs" />
+    <Compile Remove="Channels\ZeroMQIpcDuplexChannelListener.cs" />
+    <Compile Remove="Channels\ZeroMQIpcReplyChannelListener.cs" />
+    <Compile Remove="Channels\ZeroMQIpcTransferTransportBindingElement.cs" />
+    <Compile Remove="Channels\ZeroMQIpcTransportChannelFactory.cs" />
+    <Compile Remove="Channels\ZeroMQListenerRequest.cs" />
+    <Compile Remove="Channels\ZeroMQListenerResponse.cs" />
+    <Compile Remove="Channels\ZeroMQMsgHelpers.cs" />
+    <Compile Remove="Channels\ZeroMQRequestChannel.cs" />
+    <Compile Remove="Channels\ZeroMQRequestChannelFactory.cs" />
+    <Compile Remove="Channels\ZeroMQRequestChannelHelpers.cs" />
+    <Compile Remove="Channels\ZeroMQRequestContext.cs" />
+    <Compile Remove="Channels\ZeroMQRequestListener.cs" />
+    <Compile Remove="Channels\ZeroMQRequestListenerContext.cs" />
+    <Compile Remove="Channels\ZeroMQRequestMessage.cs" />
+    <Compile Remove="Channels\ZeroMQResponseMessage.cs" />
+    <Compile Remove="Channels\ZeroMQResponseStream.cs" />
+    <Compile Remove="Channels\ZeroMQSharedTransferTransportManager.cs" />
+    <Compile Remove="Channels\ZeroMQTcpReplyChannelListener.cs" />
+    <Compile Remove="Channels\ZeroMQTcpTransferTransportBindingElement.cs" />
+    <Compile Remove="Channels\ZeroMQTransferMessagingHandlerFactory.cs" />
+    <Compile Remove="Channels\ZeroMQTransferMessagingPipeline.cs" />
+    <Compile Remove="Channels\ZeroMQTransferTransportBindingElementBase.cs" />
+    <Compile Remove="Channels\ZeroMQTransferTransportChannelListenerBase.cs" />
+    <Compile Remove="Channels\ZeroMQTransferTransportManager.cs" />
+    <Compile Remove="Configuration\ZeroMQTransferBindingCollectionElement.cs" />
+    <Compile Remove="Configuration\ZeroMQTransferBindingElement.cs" />
+    <Compile Remove="Dispatcher\ZeroMQTransportExceptionHandler.cs" />
+    <Compile Remove="IZeroMQMessageContext.cs" />
+    <Compile Remove="ZeroMQApplicationHostingContext.cs" />
+    <Compile Remove="ZeroMQChannelMessagingContextAsyncChannel.cs" />
+    <Compile Remove="ZeroMQChannelMessagingContextFactory.cs" />
+    <Compile Remove="ZeroMQConnectionOrientedSoap11MessageBinding.cs" />
+    <Compile Remove="ZeroMQConnectionOrientedTextMessageBinding.cs" />
+    <Compile Remove="ZeroMQMessagingContextChannelIntegrationMiddleware.cs" />
+    <Compile Remove="ZeroMQRequestContextProvider.cs" />
+    <Compile Remove="ZeroMQRequestInputCore.cs" />
+    <Compile Remove="ZeroMQRequestOutputCore.cs" />
+    <Compile Remove="ZeroMQTransferBindingBase.cs" />
+    <Compile Remove="ZeroMQTransferChannelMessagingHostBuilder.cs" />
+    <Compile Remove="ZeroMQTransferMessagingContext.cs" />
+    <Compile Remove="ZeroMQTransferMessagingContextHandlerContext.cs" />
+    <Compile Remove="ZeroMQTransferMessagingContextHandlerContextExtensions.cs" />
+    <Compile Remove="ZeroMQTransferMessagingContextHandlerContextFactory.cs" />
+    <Compile Remove="ZeroMQTransferProtocolContext.cs" />
+    <Compile Remove="ZeroMQTransferSoap12MessageBinding.cs" />
+    <Compile Remove="ZeroMQTransferTextMessageBinding.cs" />
+    <Compile Remove="ZeroMTransferQSoap11MessageBinding.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Channels\IZeroMQChannelRequest.cs" />
+    <None Include="Channels\ZeroMQBindings.cs" />
+    <None Include="Channels\ZeroMQChannelUtilities.cs" />
+    <None Include="Channels\ZeroMQIpcConnectionOrientedTransportBindingElement.cs" />
+    <None Include="Channels\ZeroMQIpcDuplexChannelListener.cs" />
+    <None Include="Channels\ZeroMQIpcReplyChannelListener.cs" />
+    <None Include="Channels\ZeroMQIpcTransferTransportBindingElement.cs" />
+    <None Include="Channels\ZeroMQIpcTransportChannelFactory.cs" />
+    <None Include="Channels\ZeroMQListenerRequest.cs" />
+    <None Include="Channels\ZeroMQListenerResponse.cs" />
+    <None Include="Channels\ZeroMQMsgHelpers.cs" />
+    <None Include="Channels\ZeroMQRequestChannel.cs" />
+    <None Include="Channels\ZeroMQRequestChannelFactory.cs" />
+    <None Include="Channels\ZeroMQRequestChannelHelpers.cs" />
+    <None Include="Channels\ZeroMQRequestContext.cs" />
+    <None Include="Channels\ZeroMQRequestListener.cs" />
+    <None Include="Channels\ZeroMQRequestListenerContext.cs" />
+    <None Include="Channels\ZeroMQRequestMessage.cs" />
+    <None Include="Channels\ZeroMQResponseMessage.cs" />
+    <None Include="Channels\ZeroMQResponseStream.cs" />
+    <None Include="Channels\ZeroMQSharedTransferTransportManager.cs" />
+    <None Include="Channels\ZeroMQTcpReplyChannelListener.cs" />
+    <None Include="Channels\ZeroMQTcpTransferTransportBindingElement.cs" />
+    <None Include="Channels\ZeroMQTransferMessagingHandlerFactory.cs" />
+    <None Include="Channels\ZeroMQTransferMessagingPipeline.cs" />
+    <None Include="Channels\ZeroMQTransferTransportBindingElementBase.cs" />
+    <None Include="Channels\ZeroMQTransferTransportChannelListenerBase.cs" />
+    <None Include="Channels\ZeroMQTransferTransportManager.cs" />
+    <None Include="Configuration\ZeroMQTransferBindingCollectionElement.cs" />
+    <None Include="Configuration\ZeroMQTransferBindingElement.cs" />
+    <None Include="Dispatcher\ZeroMQTransportExceptionHandler.cs" />
+    <None Include="IZeroMQMessageContext.cs" />
+    <None Include="ZeroMQApplicationHostingContext.cs" />
+    <None Include="ZeroMQChannelMessagingContextAsyncChannel.cs" />
+    <None Include="ZeroMQChannelMessagingContextFactory.cs" />
+    <None Include="ZeroMQConnectionOrientedSoap11MessageBinding.cs" />
+    <None Include="ZeroMQConnectionOrientedTextMessageBinding.cs" />
+    <None Include="ZeroMQMessagingContextChannelIntegrationMiddleware.cs" />
+    <None Include="ZeroMQRequestContextProvider.cs" />
+    <None Include="ZeroMQRequestInputCore.cs" />
+    <None Include="ZeroMQRequestOutputCore.cs" />
+    <None Include="ZeroMQTransferBindingBase.cs" />
+    <None Include="ZeroMQTransferChannelMessagingHostBuilder.cs" />
+    <None Include="ZeroMQTransferMessagingContext.cs" />
+    <None Include="ZeroMQTransferMessagingContextHandlerContext.cs" />
+    <None Include="ZeroMQTransferMessagingContextHandlerContextExtensions.cs" />
+    <None Include="ZeroMQTransferMessagingContextHandlerContextFactory.cs" />
+    <None Include="ZeroMQTransferProtocolContext.cs" />
+    <None Include="ZeroMQTransferSoap12MessageBinding.cs" />
+    <None Include="ZeroMQTransferTextMessageBinding.cs" />
+    <None Include="ZeroMTransferQSoap11MessageBinding.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AllVerge.MessagingModel.MessagingFoundation\AllVerge.MessagingModel.MessagingFoundation.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\MessagingModel.MessagingApplication\MessagingModel.MessagingApplication\AllVerge.MessagingModel.MessagingApplication.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SystemPrimitives\AllVerge.SystemPrimitives.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NetMQ" Version="4.0.0.272-pre" />
+    <PackageReference Include="System.Threading.Tasks.Dataflow" Version="5.0.0" />
+    <PackageReference Include="AllVerge.MessagingModel.MessagingFoundation" Version="1.0.0-build.250203010535" />
+    <PackageReference Include="AllVerge.MessagingModel.MessagingApplication" Version="1.0.0-build.250222233405" />
+    <PackageReference Include="AllVerge.SystemPrimitives" Version="1.0.0-*" />
+  </ItemGroup>
+
+  <Target Name="ChangeAliasesOfReferences" BeforeTargets="FindReferenceAssembliesForReferences;ResolveReferences">
+    <ItemGroup>
+      <ReferencePath Condition="'%(FileName)' == 'System.ServiceModel.Primitives'">
+        <!-- Give the desired alias to the file here -->
+        <Aliases>ServiceModelPrimitives</Aliases>
+      </ReferencePath>
+    </ItemGroup>
+  </Target>
+
+</Project>
