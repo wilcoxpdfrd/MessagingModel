@@ -10,7 +10,7 @@ namespace AllVerge.MessagingModel.ZeroMQChannelMessaging.Channels
     {
         static ZeroMQBindings()
         {
-            TryAddWellKnownTransportBindingElement(new ZeroMQIpcConnectionOrientedTransportBindingElement());
+            // TryAddWellKnownTransportBindingElement(new ZeroMQIpcConnectionOrientedTransportBindingElement());
             TryAddWellKnownTransportBindingElement(new ZeroMQTcpConnectionOrientedTransportBindingElement());
         }
 
@@ -48,14 +48,14 @@ namespace AllVerge.MessagingModel.ZeroMQChannelMessaging.Channels
 
             switch (messageEncoding)
             {
-                case ZeroMQMessageEncoding.Text:
-                    messageEncodingBindingElement = new TextMessageEncodingBindingElement() { WriteEncoding = Encoding.UTF8 };
-                    break;
+                //case ZeroMQMessageEncoding.Text:
+                //    messageEncodingBindingElement = new TextMessageEncodingBindingElement() { WriteEncoding = Encoding.UTF8 };
+                //    break;
                 case ZeroMQMessageEncoding.Binary:
                     messageEncodingBindingElement = new BinaryMessageEncodingBindingElement();
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(messageEncoding), ExceptionResource.Arg_ArgumentOutOfRangeException);
+                    throw new ArgumentOutOfRangeException(nameof(messageEncoding), PublicSR.Arg_ArgumentOutOfRangeException);
             }
 
             messageEncodingBindingElement.MessageVersion = messageVersion;

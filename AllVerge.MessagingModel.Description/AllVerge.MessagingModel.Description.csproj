@@ -31,6 +31,28 @@
     <ProjectReference Include="..\..\PolicyPrimitives\AllVerge.PolicyPrimitives.csproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+    <ProjectReference Include="..\..\DataModel\AllVerge.DataModel\AllVerge.DataModel.Primitives.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataModel\AllVerge.DataModel\AllVerge.DataModel.IETFTypes.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataModel\AllVerge.DataModel\AllVerge.DataModel.JsonSchema.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <PackageReference Include="AllVerge.DataModel.RamlTypes" Version="1.0.0-*" />
+    <ProjectReference Include="..\..\DataModel\AllVerge.DataModel\AllVerge.DataModel..csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataModel\AllVerge.DataModel\AllVerge.DataModel.SwaggerTypes.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataModel\AllVerge.DataModel\AllVerge.DataModel.YamlTypes.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataModel\AllVerge.DataModel\AllVerge.DataModel.XmlSchema.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
     <ProjectReference Include="..\AllVerge.MessagingModel.Markup.Html\AllVerge.MessagingModel.Markup.Html.csproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
@@ -49,7 +71,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AllVerge.MessagingModel.MessagingFoundation" Version="1.0.0-build.250203010535" />
+    <PackageReference Include="AllVerge.MessagingModel.MessagingFoundation" Version="1.0.0-*" />
     <PackageReference Include="AllVerge.PolicyPrimitives" Version="1.0.0-*" />
     <PackageReference Include="AllVerge.DataModel.Primitives" Version="1.0.0-*" />
     <PackageReference Include="AllVerge.DataModel.IETFTypes" Version="1.0.0-*" />

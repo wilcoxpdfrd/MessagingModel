@@ -12,7 +12,7 @@ namespace AllVerge.MessagingModel.MessagingFoundation.Channels
         /// <summary>Returns the name of the property.</summary>
         public const string Name = nameof(MessageEncodingFormatProperty);
 
-        private MessageEncodingFormat resourceTransferMessageFormat;
+        private MessageEncodingFormat messageEncodingFormat;
 
         private static MessageEncodingFormatProperty formUrlEncodedProperty;
         private static MessageEncodingFormatProperty formMultipartData;
@@ -47,7 +47,7 @@ namespace AllVerge.MessagingModel.MessagingFoundation.Channels
             {
                 throw DiagnosticUtility.ExceptionUtility.ThrowHelperError(new ArgumentException(PublicSR.DefaultContentFormatNotAllowedInProperty));
             }
-            this.resourceTransferMessageFormat = resourceTransferMessageFormat;
+            this.messageEncodingFormat = resourceTransferMessageFormat;
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace AllVerge.MessagingModel.MessagingFoundation.Channels
         /// </returns>
         public MessageEncodingFormat Format
         {
-            get { return this.resourceTransferMessageFormat; }
+            get { return this.messageEncodingFormat; }
         }
 
         internal static MessageEncodingFormatProperty FormMultipartDataProperty

@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <Compile Remove="Channels\IZeroMQChannelRequest.cs" />
-    <Compile Remove="Channels\ZeroMQBindings.cs" />
     <Compile Remove="Channels\ZeroMQChannelUtilities.cs" />
     <Compile Remove="Channels\ZeroMQIpcConnectionOrientedTransportBindingElement.cs" />
     <Compile Remove="Channels\ZeroMQIpcDuplexChannelListener.cs" />
@@ -67,7 +66,6 @@
 
   <ItemGroup>
     <None Include="Channels\IZeroMQChannelRequest.cs" />
-    <None Include="Channels\ZeroMQBindings.cs" />
     <None Include="Channels\ZeroMQChannelUtilities.cs" />
     <None Include="Channels\ZeroMQIpcConnectionOrientedTransportBindingElement.cs" />
     <None Include="Channels\ZeroMQIpcDuplexChannelListener.cs" />
@@ -132,7 +130,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NetMQ" Version="4.0.0.272-pre" />
+    <PackageReference Include="NetMQ" Version="4.0.0.272-pre" PrivateAssets="All" />
     <PackageReference Include="System.Threading.Tasks.Dataflow" Version="5.0.0" />
     <PackageReference Include="AllVerge.MessagingModel.MessagingFoundation" Version="1.0.0-build.250203010535" />
     <PackageReference Include="AllVerge.MessagingModel.MessagingApplication" Version="1.0.0-build.250222233405" />

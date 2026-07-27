@@ -47,18 +47,22 @@
     <ProjectReference Include="..\AllVerge.MessagingModel.Markup.Json\AllVerge.MessagingModel.Markup.Json.csproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+    <ProjectReference Include="..\AllVerge.MessagingModel.Markup.PlainText\AllVerge.MessagingModel.Markup.PlainText.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
     <ProjectReference Include="..\AllVerge.MessagingModel.Markup.Xml\AllVerge.MessagingModel.Markup.Xml.csproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MessagingFoundation.Primitives" Version="6.0.0-build.241125064027" />
-    <PackageReference Include="AllVerge.MessagingModel.ChannelMessaging" Version="1.0.0-build.250222233939" />
-    <PackageReference Include="AllVerge.MessagingModel.MarkupPrimitives" Version="1.0.0-build.241123222826" />
-    <PackageReference Include="AllVerge.MessagingModel.Markup.Html" Version="1.0.0-build.241123222836" />
-    <PackageReference Include="AllVerge.MessagingModel.Markup.Json" Version="1.0.0-build.241123222836" />
+    <PackageReference Include="MessagingFoundation.Primitives" Version="6.0.0-*" />
+    <PackageReference Include="AllVerge.SystemPrimitives" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.MessagingModel.ChannelMessaging" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.MessagingModel.MarkupPrimitives" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.MessagingModel.Markup.Html" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.MessagingModel.Markup.Json" Version="1.0.0-*" />
     <PackageReference Include="AllVerge.MessagingModel.Markup.PlainText" Version="1.0.0-*" />
-    <PackageReference Include="AllVerge.MessagingModel.Markup.Xml" Version="1.0.0-build.241123222830" />
+    <PackageReference Include="AllVerge.MessagingModel.Markup.Xml" Version="1.0.0-*" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Resources\Resource.Designer.cs">

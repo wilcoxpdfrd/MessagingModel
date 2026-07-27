@@ -76,8 +76,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AllVerge.MicrosoftPrimitives" Version="1.0.0-build.250202181902" />
-    <PackageReference Include="AllVerge.MessagingModel.MessagingApplication" Version="1.0.0-build.250222233405" />
+    <PackageReference Include="AllVerge.MicrosoftPrimitives" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.MessagingModel.MessagingApplication" Version="1.0.0-*" />
   </ItemGroup>
 
 </Project>

@@ -44,7 +44,7 @@
     <PackageReference Include="AllVerge.PolicyPrimitives" Version="1.0.0-*" />
     <PackageReference Include="AllVerge.SystemPrimitives" Version="1.0.0-*" />
     <PackageReference Include="AllVerge.MessagingModel.Markup.Xml" Version="1.0.0-*" />
-    <PackageReference Include="AllVerge.MessagingModel.MessagingFoundation" Version="1.0.0-build.250203010535" />
+    <PackageReference Include="AllVerge.MessagingModel.MessagingFoundation" Version="1.0.0-*" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Referrals\Schemas\ws-referral.cs">

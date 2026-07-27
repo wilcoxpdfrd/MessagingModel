@@ -16,9 +16,6 @@
     <ProjectReference Include="..\..\..\MessagingFoundation\src\System.ServiceModel.Primitives\src\MessagingFoundation.Primitives.csproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\AllVerge.MessagingModel.Example.ZeroMQTcpDuplexListenerExample\AllVerge.MessagingModel.Example.ZeroMQTcpDuplexListenerExample.csproj" />
   </ItemGroup>
 

@@ -24,9 +24,9 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="MessagingFoundation.Primitives" Version="6.0.0-build.241125064027" />
-    <PackageReference Include="AllVerge.MessagingModel.ChannelMessaging" Version="1.0.0-build.250222233939" />
-    <PackageReference Include="AllVerge.MessagingModel.MessagingFoundation" Version="1.0.0-build.250203010535" />
+    <PackageReference Include="MessagingFoundation.Primitives" Version="6.0.0-*" />
+    <PackageReference Include="AllVerge.MessagingModel.ChannelMessaging" Version="1.0.0-*" />
+    <PackageReference Include="AllVerge.MessagingModel.MessagingFoundation" Version="1.0.0-*" />
   </ItemGroup>
 
 </Project>

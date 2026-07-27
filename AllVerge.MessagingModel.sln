@@ -93,6 +93,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AllVerge.MessagingModel.Cha
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AllVerge.MessagingModel.Example.HttpChannelMessagingServer", "AllVerge.MessagingModel.ChannelMessaging\AllVerge.MessagingModel.Example.HttpChannelMessagingServer\AllVerge.MessagingModel.Example.HttpChannelMessagingServer.csproj", "{5D5DDFAA-8F96-4613-8725-92120C4E32CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AllVerge.MessagingModel.Policy.Client", "AllVerge.MessagingModel.Policy.Client\AllVerge.MessagingModel.Policy.Client.csproj", "{3E203C0B-345A-1738-B174-9C516A389B0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AllVerge.MessagingModel.Referrals.Policy.Client", "AllVerge.MessagingModel.Referrals.Policy.Client\AllVerge.MessagingModel.Referrals.Policy.Client.csproj", "{2388A23E-CB9C-C41B-3711-85DB8A3C1CAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AllVerge.MessagingModel.DispatchingPrimitives", "AllVerge.MessagingModel.DispatchingPrimitives\AllVerge.MessagingModel.DispatchingPrimitives.csproj", "{A9CD7B68-EEDF-FC1B-697C-8B6B8E56297B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -215,6 +221,18 @@ Global
 		{5D5DDFAA-8F96-4613-8725-92120C4E32CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D5DDFAA-8F96-4613-8725-92120C4E32CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D5DDFAA-8F96-4613-8725-92120C4E32CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E203C0B-345A-1738-B174-9C516A389B0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E203C0B-345A-1738-B174-9C516A389B0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E203C0B-345A-1738-B174-9C516A389B0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E203C0B-345A-1738-B174-9C516A389B0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2388A23E-CB9C-C41B-3711-85DB8A3C1CAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2388A23E-CB9C-C41B-3711-85DB8A3C1CAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2388A23E-CB9C-C41B-3711-85DB8A3C1CAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2388A23E-CB9C-C41B-3711-85DB8A3C1CAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9CD7B68-EEDF-FC1B-697C-8B6B8E56297B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9CD7B68-EEDF-FC1B-697C-8B6B8E56297B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9CD7B68-EEDF-FC1B-697C-8B6B8E56297B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9CD7B68-EEDF-FC1B-697C-8B6B8E56297B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -249,6 +267,7 @@ Global
 		{57673E01-126E-4C9F-B50C-7217FAE56D9D} = {6A870BCC-D230-412C-90A5-3473AF4A35AA}
 		{AD884F31-2C3F-4B9E-BECA-69781FA7881E} = {57673E01-126E-4C9F-B50C-7217FAE56D9D}
 		{5D5DDFAA-8F96-4613-8725-92120C4E32CD} = {6A870BCC-D230-412C-90A5-3473AF4A35AA}
+		{A9CD7B68-EEDF-FC1B-697C-8B6B8E56297B} = {B859B0FE-F1C8-4682-9F3B-C0F9A2FC2F35}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7DF053DB-87F6-41B2-824A-CEE36800328D}

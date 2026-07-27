@@ -4,8 +4,8 @@ using System.Text;
 
 using System.ServiceModel.Channels;
 
-using AllVerge.Core.ServiceModel.Channels;
-using AllVerge.Core.ServiceModel.ZeroMQ.Channels;
+using AllVerge.MessagingModel.ZeroMQChannelMessaging;
+using AllVerge.MessagingModel.ZeroMQChannelMessaging.Channels;
 
 namespace AllVerge.Core.ServiceModel.ZeroMQ.Client
 {
